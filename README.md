@@ -1,6 +1,6 @@
-Cordova InappBrowser Plugin Test 
-================================
+Test app for cordova-plugin-inappbrowser-wkwebview 
+==================================================
 
-This repo contains a [Cordova](http://cordova.apache.org/) project which builds a test app for Android and iOS to test functionality of [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
+This repo contains a [Cordova](http://cordova.apache.org/) project which builds an app to test functionality of [cordova-plugin-inappbrowser-wkwebview ](https://github.com/dpa99c/cordova-plugin-inappbrowser-wkwebview)
 
-This branch tests the [modified version](https://github.com/dpa99c/cordova-plugin-themeablebrowser.git#wkwebview) of inappbrowser powered by WKWebView. 
+`cordova-plugin-inappbrowser-wkwebview` is a fork of [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser) that uses the the newer [WKWebview](https://developer.apple.com/documentation/webkit/wkwebview) to power the InAppBrowser, in contrast to `cordova-plugin-inappbrowser` which still currently uses the legacy [UIWebView](https://developer.apple.com/documentation/uikit/uiwebview).
