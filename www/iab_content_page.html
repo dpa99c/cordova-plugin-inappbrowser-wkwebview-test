@@ -7,6 +7,55 @@
     <body>
         <h1>Original Title</h1>
         <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas non accumsan est. Aliquam vitae facilisis tortor. Donec hendrerit lectus sit amet turpis hendrerit, vel malesuada metus dapibus. In dui turpis, bibendum quis pretium at, pretium sit amet sapien. Sed nunc odio, venenatis sit amet libero id, gravida pharetra enim. Curabitur a magna vitae mauris sollicitudin euismod in sit amet libero. Aenean sed rutrum nunc, vitae porttitor est.</p>
+        <div>
+        	<label>mycookie:</label>
+        	<input id="mycookie" />
+    	</div>
+
+        <script type="text/javascript">
+			// Read cookie
+			function readCookie(name) {
+			    var nameEQ = name + "=";
+			    var ca = document.cookie.split(';');
+			    for(var i=0;i < ca.length;i++) {
+			        var c = ca[i];
+			        while (c.charAt(0) === ' ') {
+			            c = c.substring(1,c.length);
+			        }
+			        if (c.indexOf(nameEQ) === 0) {
+			            return c.substring(nameEQ.length,c.length);
+			        }
+			    }
+			    return null;
+			}
+
+			// Create cookie
+			function createCookie(name, value, days) {
+			    var expires;
+			    if (days) {
+			        var date = new Date();
+			        date.setTime(date.getTime()+(days*24*60*60*1000));
+			        expires = "; expires="+date.toGMTString();
+			    }
+			    else {
+			        expires = "";
+			    }
+			    document.cookie = name+"="+value+expires+"; path=/";
+			}
+
+			function readMyCookie(){
+				document.getElementById('mycookie').value = readCookie('mycookie');
+			}
+
+			function setMyCookie(){
+				createCookie('mycookie', document.getElementById('mycookie').value);
+			}
+
+        	(function(){
+        		readMyCookie();
+				document.getElementById('mycookie').addEventListener('change', setMyCookie);
+        	})();
+        </script>
     </body>
 </html>
 
