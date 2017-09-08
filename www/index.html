@@ -26,12 +26,23 @@
         #log{
             margin-top: 16px;
         }
+
+        body.hidden .open,
+        body:not(.hidden) #show{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <h2>InappBrowser Test App</h2>
-    <button id="open" onclick="openIAB()">Open Test Page in IAB</button>
+
+    <div class="open">
+        <button id="open" onclick="openIAB()">Open IAB</button>
+        <label>Open as hidden:</label>
+        <input type="checkbox" id="init-hidden" />
+    </div>
+    <button id="show" onclick="showIAB()">Show IAB</button>
 
     <p>Platform: <span id="platform"></span></p>
     <p>Webview: <span id="webview"></span></p>

@@ -11,6 +11,9 @@
         	<label>mycookie:</label>
         	<input id="mycookie" />
     	</div>
+        <p>Opened <span id="time">0</span> seconds ago</p>
+
+        <button onclick="hide()">Hide</button>
 
         <script type="text/javascript">
 			// Read cookie
@@ -50,6 +53,10 @@
 			function setMyCookie(){
 				createCookie('mycookie', document.getElementById('mycookie').value);
 			}
+
+			function hide(){
+			    createCookie('hide', true);
+            }
 
         	(function(){
         		readMyCookie();
