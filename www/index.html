@@ -31,21 +31,32 @@
         body:not(.hidden) #show{
             display: none;
         }
+
+        .section{
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin: 16px;
+        }
     </style>
 </head>
 
 <body>
     <h2>InappBrowser Test App</h2>
 
-    <div class="open">
-        <button id="open" onclick="openIAB()">Open IAB</button>
-        <label>Open as hidden:</label>
-        <input type="checkbox" id="init-hidden" />
+    <div class="section">
+        <div class="open">
+            <button id="open" onclick="openIAB()">Open IAB</button>
+            <label>Open as hidden:</label>
+            <input type="checkbox" id="init-hidden" />
+        </div>
+        <button id="show" onclick="showIAB()">Show IAB</button>
     </div>
-    <button id="show" onclick="showIAB()">Show IAB</button>
 
-    <p>Platform: <span id="platform"></span></p>
-    <p>Webview: <span id="webview"></span></p>
+    <div class="section">
+        Platform: <span id="platform"></span>
+        <br/>
+        Webview: <span id="webview"></span>
+    </div>
 
     <div>
         <label>mycookie:</label>

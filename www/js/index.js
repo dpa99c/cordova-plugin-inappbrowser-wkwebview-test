@@ -149,6 +149,7 @@ function onDeviceReady() {
     osVersion = parseFloat(device.version);
 
     $('#platform').html(device.platform + " " + device.version);
+    getIabOpts();
     $('#webview').html(webView);
 
     setMyCookie();
@@ -174,5 +175,6 @@ function getIabOpts(){
     }
     return iabOpts;
 }
+
 
 $(document).on('deviceready', onDeviceReady);

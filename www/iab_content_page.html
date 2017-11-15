@@ -7,6 +7,10 @@
     <body>
         <h1>Original Title</h1>
         <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas non accumsan est. Aliquam vitae facilisis tortor. Donec hendrerit lectus sit amet turpis hendrerit, vel malesuada metus dapibus. In dui turpis, bibendum quis pretium at, pretium sit amet sapien. Sed nunc odio, venenatis sit amet libero id, gravida pharetra enim. Curabitur a magna vitae mauris sollicitudin euismod in sit amet libero. Aenean sed rutrum nunc, vitae porttitor est.</p>
+
+        <p>Platform: <span id="platform"></span></p>
+        <p>Webview: <span id="webview"></span></p>
+
         <div>
         	<label>mycookie:</label>
         	<input id="mycookie" />
@@ -14,6 +18,10 @@
         <p>Opened <span id="time">0</span> seconds ago</p>
 
         <button onclick="hide()">Hide</button>
+
+        <button onclick="showAlert()">Alert</button>
+        <button onclick="showConfirm()">Confirm</button>
+        <button onclick="showPrompt()">Prompt</button>
 
         <script type="text/javascript">
 			// Read cookie
@@ -58,9 +66,55 @@
 			    createCookie('hide', true);
             }
 
+            function showPlatformDetails(){
+                var webView, platform;
+                if (navigator.userAgent.match("Apple")) {
+                    platform = "iOS";
+                    if (window.webkit && window.webkit.messageHandlers) {
+                        webView = "WKWebView";
+                    } else {
+                        webView = "UIWebView";
+                    }
+                } else {
+                    platform = "Android";
+                    if (navigator.userAgent.toLowerCase().indexOf('crosswalk') > -1) {
+                        webView = "Crosswalk";
+                    } else {
+                        webView = "System";
+                    }
+                }
+                document.getElementById('platform').innerHTML = platform;
+                document.getElementById('webview').innerHTML = webView;
+            }
+
+            function onReady(){
+			    console.log("ready");
+                showPlatformDetails();
+            }
+
+            function showAlert(){
+                window.alert('Alert!');
+            }
+
+            function showConfirm(){
+                var result = window.confirm("Confirm?");
+                window.alert('You chose ' + (result ? 'OK' : 'Cancel'));
+            }
+
+            function showPrompt(){
+                var result = window.prompt("Enter something");
+                if(result !== null){
+                    result = 'You entered "' + result + '"';
+                }else{
+                    result = 'You pressed Cancel';
+                }
+                window.alert(result);
+            }
+
         	(function(){
         		readMyCookie();
 				document.getElementById('mycookie').addEventListener('change', setMyCookie);
+				document.addEventListener('DOMContentLoaded', onReady);
         	})();
         </script>
     </body>
