@@ -32,7 +32,6 @@ function openIAB() {
         log("received 'exit' event");
         clearInterval(updateTimerId); updateTimerId = null;
         clearInterval(hideTimerId); hideTimerId = null;
-        readMyCookie();
     });
 }
 
@@ -88,15 +87,11 @@ function onIABLoaded() {
 function hideIAB(){
     document.body.className = "hidden";
     iab.hide();
-    readMyCookie();
 }
 
 function showIAB(){
     document.body.className = "";
     iab.show();
-    iab.executeScript({
-        code: "readMyCookie();"
-    });
 }
 
 // Create cookie
@@ -134,14 +129,6 @@ function eraseCookie(name) {
     createCookie(name,"",-1);
 }
 
-function setMyCookie() {
-    createCookie('mycookie', document.getElementById('mycookie').value);
-}
-
-function readMyCookie(){
-    document.getElementById('mycookie').value = readCookie('mycookie');
-}
-
 
 function onDeviceReady() {
     console.log("deviceready");
@@ -152,8 +139,6 @@ function onDeviceReady() {
     getIabOpts();
     $('#webview').html(webView);
 
-    setMyCookie();
-    document.getElementById('mycookie').addEventListener('change', setMyCookie);
 }
 
 function getIabOpts(){

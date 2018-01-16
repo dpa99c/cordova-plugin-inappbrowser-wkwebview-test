@@ -11,17 +11,10 @@
         <p>Platform: <span id="platform"></span></p>
         <p>Webview: <span id="webview"></span></p>
 
-        <div>
-        	<label>mycookie:</label>
-        	<input id="mycookie" />
-    	</div>
+
         <p>Opened <span id="time">0</span> seconds ago</p>
 
         <button onclick="hide()">Hide</button>
-
-        <button onclick="showAlert()">Alert</button>
-        <button onclick="showConfirm()">Confirm</button>
-        <button onclick="showPrompt()">Prompt</button>
 
         <script type="text/javascript">
 			// Read cookie
@@ -54,14 +47,6 @@
 			    document.cookie = name+"="+value+expires+"; path=/";
 			}
 
-			function readMyCookie(){
-				document.getElementById('mycookie').value = readCookie('mycookie');
-			}
-
-			function setMyCookie(){
-				createCookie('mycookie', document.getElementById('mycookie').value);
-			}
-
 			function hide(){
 			    createCookie('hide', true);
             }
@@ -92,28 +77,7 @@
                 showPlatformDetails();
             }
 
-            function showAlert(){
-                window.alert('Alert!');
-            }
-
-            function showConfirm(){
-                var result = window.confirm("Confirm?");
-                window.alert('You chose ' + (result ? 'OK' : 'Cancel'));
-            }
-
-            function showPrompt(){
-                var result = window.prompt("Enter something");
-                if(result !== null){
-                    result = 'You entered "' + result + '"';
-                }else{
-                    result = 'You pressed Cancel';
-                }
-                window.alert(result);
-            }
-
         	(function(){
-        		readMyCookie();
-				document.getElementById('mycookie').addEventListener('change', setMyCookie);
 				document.addEventListener('DOMContentLoaded', onReady);
         	})();
         </script>
