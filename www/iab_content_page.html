@@ -114,13 +114,13 @@
             }
 
             function onClickPostMessage(){
-                postMessage("logout");
+                postMessage({
+                	action: "logout"
+                });
             }
 
-            function postMessage(action){
-                webkit.messageHandlers.cordova_iab.postMessage({
-                    action: action
-                });
+            function postMessage(message){
+                webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message));
             }
 
         	(function(){
