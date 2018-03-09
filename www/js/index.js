@@ -1,6 +1,6 @@
 var IAB_PAGE_URL = "iab_content_page.html";
 
-var webView, osVersion, iab, updateTimerId, startTime, hideTimerId;
+var webView, osVersion, iab, updateTimerId, startTime;
 
 function log(msg) {
     $('#log').append("<p>" + msg + "</p>");
@@ -31,8 +31,14 @@ function openIAB() {
     iab.addEventListener('exit', function () {
         log("received 'exit' event");
         clearInterval(updateTimerId); updateTimerId = null;
-        clearInterval(hideTimerId); hideTimerId = null;
         readMyCookie();
+    });
+    iab.addEventListener('message', function (e) {
+        log("received 'message' event");
+        console.dir(e);
+        if(e.data.action === 'hide'){
+            hideIAB();
+        }
     });
 }
 
@@ -75,13 +81,6 @@ function onIABLoaded() {
             console.log("executeScript for updateTimer returned : " + returnValue);
         });
     }, 1000);
-
-    hideTimerId = setInterval(function () {
-        if(readCookie('hide')){
-            eraseCookie('hide');
-            hideIAB();
-        }
-    }, 100);
 
 }
 

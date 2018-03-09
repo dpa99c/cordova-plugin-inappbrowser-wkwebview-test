@@ -23,6 +23,8 @@
         <button onclick="showConfirm()">Confirm</button>
         <button onclick="showPrompt()">Prompt</button>
 
+        <button onclick="onClickPostMessage()">Post Message</button>
+
         <script type="text/javascript">
 			// Read cookie
 			function readCookie(name) {
@@ -63,7 +65,7 @@
 			}
 
 			function hide(){
-			    createCookie('hide', true);
+			    postMessage("hide");
             }
 
             function showPlatformDetails(){
@@ -109,6 +111,16 @@
                     result = 'You pressed Cancel';
                 }
                 window.alert(result);
+            }
+
+            function onClickPostMessage(){
+                postMessage("logout");
+            }
+
+            function postMessage(action){
+                webkit.messageHandlers.cordova_iab.postMessage({
+                    action: action
+                });
             }
 
         	(function(){
