@@ -15,6 +15,10 @@
         	<label>mycookie:</label>
         	<input id="mycookie" />
     	</div>
+        <div>
+            <label>localstorage:</label>
+            <input id="localstorage" />
+        </div>
         <p>Opened <span id="time">0</span> seconds ago</p>
 
         <button onclick="hide()">Hide</button>
@@ -63,6 +67,14 @@
 			function setMyCookie(){
 				createCookie('mycookie', document.getElementById('mycookie').value);
 			}
+
+            function setLocalStorage(){
+                localStorage.setItem('mykey', document.getElementById('localstorage').value);
+            }
+
+            function getLocalStorage(){
+                document.getElementById('localstorage').value = localStorage.getItem('mykey');
+            }
 
 			function hide(){
 			    postMessage("hide");
@@ -125,7 +137,9 @@
 
         	(function(){
         		readMyCookie();
+                getLocalStorage();
 				document.getElementById('mycookie').addEventListener('change', setMyCookie);
+                document.getElementById('localstorage').addEventListener('change', setLocalStorage);
 				document.addEventListener('DOMContentLoaded', onReady);
         	})();
         </script>

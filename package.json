@@ -6,6 +6,7 @@
     "author": "Dave Alden",
     "license": "MIT",
     "dependencies": {
+        "cordova-android": "^6.3.0",
         "cordova-ios": "4",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-inappbrowser-wkwebview": "git+https://github.com/dpa99c/cordova-plugin-inappbrowser-wkwebview",
@@ -20,7 +21,8 @@
             "cordova-plugin-wkwebview-engine": {}
         },
         "platforms": [
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }
