@@ -2,21 +2,19 @@
     "name": "io.cordova.inappbrowser.test.wkwebview",
     "displayName": "WKWebView IAB Test",
     "version": "1.0.0",
-    "description": "Test app project for cordova-plugin-inappbrowser-wkwebview",
+    "description": "Test app project for cordova-plugin-inappbrowser",
     "author": "Dave Alden",
     "license": "MIT",
     "dependencies": {
-        "cordova-android": "^6.3.0",
-        "cordova-ios": "4",
         "cordova-plugin-device": "^1.1.6",
-        "cordova-plugin-inappbrowser-wkwebview": "git+https://github.com/dpa99c/cordova-plugin-inappbrowser-wkwebview",
+        "cordova-plugin-inappbrowser": "*",
         "cordova-plugin-whitelist": "^1.3.2",
         "cordova-plugin-wkwebview-engine": "^1.1.3"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-inappbrowser-wkwebview": {},
+            "cordova-plugin-inappbrowser": {},
             "cordova-plugin-device": {},
             "cordova-plugin-wkwebview-engine": {}
         },

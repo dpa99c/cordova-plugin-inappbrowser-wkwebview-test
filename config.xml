@@ -17,9 +17,9 @@
         <allow-navigation href="*" />
     </platform>
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
-    <plugin name="cordova-plugin-inappbrowser-wkwebview" spec="git+https://github.com/dpa99c/cordova-plugin-inappbrowser-wkwebview" />
+    <plugin name="cordova-plugin-inappbrowser" spec="*" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="^1.1.3" />
-    <engine name="ios" spec="4" />
-    <engine name="android" spec="^6.3.0" />
+    <engine name="ios" />
+    <engine name="android" />
 </widget>

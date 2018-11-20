@@ -40,6 +40,16 @@ function openIAB() {
             hideIAB();
         }
     });
+    iab.addEventListener('beforeload', function (e, cb) {
+        log("received 'beforeload' event");
+        console.log("received 'beforeload' event for: " + e.url);
+        if($('#abort-on-beforeload')[0].checked){
+            log("aborted on beforeload");
+            console.warn("aborted on beforeload: "+e.url);
+        }else{
+            cb(e.url);
+        }
+    });
 }
 
 function onIABLoaded() {
@@ -158,7 +168,11 @@ function onDeviceReady() {
 function getIabOpts(){
     var iabOpts;
     if (device.platform === "iOS") {
-        iabOpts = 'location=no,toolbar=yes';
+        iabOpts = 'location=no,toolbar=yes,beforeload=yes';
+        var targetWebview = $('input[name=webview]:checked').val();
+        if(targetWebview === "wkwebview"){
+        	iabOpts += ',usewkwebview=yes';
+        }
         if (window.webkit && window.webkit.messageHandlers) {
             webView = "WKWebView";
         } else {
